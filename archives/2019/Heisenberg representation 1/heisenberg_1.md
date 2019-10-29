@@ -44,7 +44,7 @@ $$
 我们通常还会把单位矩阵 $I$ 算为 Pauli 算符。读者可以很容易地验证，这四个 Pauli 算符加上 $\pm 1$ 和 $\pm i$ 在乘法意义下构成一个群，这就是单比特的 Pauli 群。推广到多比特的情况，Pauli 群里的元素都可以表示 $i^m P_1 \otimes P_2 \otimes \cdots \otimes P_n$ 的形式，其中，$m \in \{ 0, 1, 2, 3\}$， $P_i \in \{ I, X, Y, Z \}$。
 
 
-上面说的 $\H$、$\S$、$\CNOT$ 都属于 Clifford 门，其特性为把一个 Pauli 群的元素映射到另一个 Pauli 群的元素。换句话说，Clifford 门保 Pauli 群不变，作用效果是对其群元素的置换。量子门 $U$ 对算符 $P$ 的作用定义为 $U P U^{\dagger}$。比如说，对于 Hadamard 门，其对 Pauli 算符的作用如下：
+上面说的 $\H$、$\S$、$\CNOT$ 都属于 Clifford 门，其特性为把一个 Pauli 群的元素映射到另一个 Pauli 群的元素。换句话说，Clifford 门保 Pauli 群不变，作用效果是对其群元素的置换。量子门 $U$ 对算符 $P$ 的作用定义为 $U P U^{\dagger}$。比如说，对于 Hadamard 门，我们有 $\H^{\dagger} = \H$，其对 Pauli 算符的作用如下：
 $$
 \begin{aligned}
 \H X \H &= Z &
@@ -103,11 +103,11 @@ $$
 很容易可以看到，上面的式子写开之后就是
 $$
 \begin{aligned}
-p(x) = \frac{1}{2^n} \prod_{i = 1}^n \langle x_i | (I + Q_i) | x_i \rangle \ 。
+p(x) = \frac{1}{2^n} \prod_{i = 1}^n \langle x | (I + Q_i) | x \rangle \ 。
 \end{aligned}
 $$
 
-这里，$\langle x_i | I | x_i \rangle = 1$。由 Hermitian 算符的定义我们可以知道，每个 $Q_i$ 都是 Hermitian 的，因为 $Z_i$ 是 Hermitian 的。也就是说，$Q_i \in \pm \{ I, X, Y, Z \}$。所以，$\langle x_i | Q_i | x_i \rangle = \pm 1$ 或者 $0$。乘积中的每一项都可以有效精确地算出来，因此，$p(x)$ 也可以有效精确地算出来。如果我们只测量部分比特，$p(x)$ 依然可以用类似的方法计算。细节我就留给读者补全了。
+这里，$\langle x | I | x \rangle = 1$。由 Hermitian 算符的定义我们可以知道，每个 $Q_i$ 都是 Hermitian 的，因为 $Z_i$ 是 Hermitian 的。因此，$Q_i$ 的相位部分 $i^m = \pm 1$，$\langle x | Q_i | x \rangle = \pm 1$ 或者 $0$。所以，我们可以看到，乘积中的每一项都可以有效精确地算出来——这也就意味着，$p(x)$ 也可以有效精确地算出来。如果我们只测量部分比特，$p(x)$ 依然可以用类似的方法计算。细节我就留给读者补全了。
 
 
 总结一下，在 Gottesman-Knill 定理中，我们通过把量子态写成 Pauli 算符的展开，然后考虑 Pauli 算符在 Clifford 线路下的演化，从而得到最后想要求的输出概率。有兴趣的读者可以思考一下，如果线路里面包含 $\T$ 门的话，用上面的方法做模拟会出什么问题？
@@ -118,7 +118,7 @@ $$
 
 ## 多说两句
 
-量子线路模拟是量子计算的一个重要方向，而 Gottesman-Knill 是其中的一个非常漂亮的结果。在这个定理之后，Scott Aaronson 在2004年跟 Gottesman 合作，改进了定理中的算法 [2]。之后还有一系列的工作考虑不同情形下对 Clifford + T 线路的模拟。比如说，在16年，Sergey Bravyi 和 David Gosset 提出一个算法，能有效模拟线路中有少量 $\T$ 门的情况 [3]。在上周的一篇 PRL 中 [4]，卜凯峰和 Dax Koh 则是考虑 nonstabilizer 的输入态 + Clifford 线路的模拟（在后续的系列中我们会介绍 stabilizer 态和 nonstabilizer 态，敬请期待吧:laughing:）。但值得注意的是，不同的文章考虑的经典模拟的定义可以不太一样。
+量子线路模拟是量子计算的一个重要方向，而 Gottesman-Knill 是其中的一个非常漂亮的结果。在这个定理之后，Scott Aaronson 在2004年跟 Gottesman 合作，改进了定理中的算法 [2]。之后还有一系列的工作考虑不同情形下对 Clifford + T 线路的模拟。比如说，在16年，Sergey Bravyi 和 David Gosset 提出一个算法，能有效模拟线路中有少量 $\T$ 门的情况 [3]。在上周的一篇 PRL 中 [4]，卜凯峰和 Dax Koh 则是考虑 nonstabilizer 的输入态 + Clifford 线路的模拟（在后续的系列中我们会介绍 stabilizer 态和 nonstabilizer 态，敬请期待吧:laughing:）。但值得注意的是，不同的文章考虑的经典模拟的定义可能不太一样。
 
 
 
