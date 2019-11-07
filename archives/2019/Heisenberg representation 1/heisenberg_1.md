@@ -93,7 +93,7 @@ $$
 其中，$Q_i := U Z_i U^{\dagger}$ 是 $Z_i$ 经过 $U$ 演化后得到的算符。因为 $U$ 是一个 Clifford 线路，所以 $Q_i$ 也是 Pauli 群的元素。Gottesman-Knill 的核心在于每个 $Q_i$ 都是可以很容易地找到。事实上，我们只需要把 Hadamard 门、相位门以及 $\CNOT$ 门对 Pauli 算符的作用写成一张表存起来，然后对线路里面每一个门都查一次表，就能够知道 $Z_i$ 最终会演化成什么算符，也就是 $Q_i$ 了。
 
 
-要想求测量得到 $|0^n\rangle$ 的概率的话，我们用如下式子：
+要想求测量得到 $|x\rangle$ 的概率的话，我们用如下式子：
 $$
 \begin{aligned}
 p(x) = \Tr(|x\rangle \langle x | U |0^n\rangle \langle 0^n | U^{\dagger}) \ 。
